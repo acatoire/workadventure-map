@@ -2,9 +2,9 @@
 
 ![map](./map.png)
 
-This is a starter kit to help you build your own map for [WorkAdventure](https://workadventu.re).
+This is a [starter kit project](https://workadventu.re/map-building) modification for my team on[WorkAdventure](https://workadventu.re).
 
-To understand how to use this starter kit, follow the tutorial at [https://workadventu.re/map-building](https://workadventu.re/map-building).
+The test page is on this [github page](https://acatoire.github.io/workadventure-map/)
 
 ## Structure
 * *public*: Static files like PDFs or audio files
