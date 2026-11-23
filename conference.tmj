@@ -327,7 +327,7 @@
                         {
                          "name":"exitUrl",
                          "type":"string",
-                         "value":"map.tmj#from-conference"
+                         "value":"office.tmj#from-conference"
                         }],
                  "rotation":0,
                  "type":"area",

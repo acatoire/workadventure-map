@@ -11,7 +11,7 @@ The test page is on this [github page](https://acatoire.github.io/workadventure-
 * *src*: Map scripts (must stay in this folder)
 * *app*: Local dev server entry point (provided by `@workadventure/map-starter-kit-core`)
 * *tilesets*: All tilesets
-* *map.tmj*, *conference.tmj*: Map files
+* *office.tmj*, *conference.tmj*: Map files
 * *map.png*: The map thumbnail displayed on the in-game map information
 
 If you want to use more than one map file, just add the new map file on root or in a folder.
@@ -48,11 +48,11 @@ npm run preview
 This project contains multiple licenses as follows:
 
 * [Code license](./LICENSE.code) *(all files except those for other licenses)*
-* [Map license](./LICENSE.map) *(`map.tmj` and the map visual as well)*
+* [Map license](./LICENSE.map) *(`office.tmj`, `conference.tmj` and the map visuals as well)*
 * [Assets license](./LICENSE.assets) *(the files inside the `src/assets/` folder)*
 
 ### About third party assets
 
 If you add third party assets in your map, do not forget to:
-1. Credit the author and license with the "tilesetCopyright" property present in the properties of each tilesets in the `map.tmj` file
+1. Credit the author and license with the "tilesetCopyright" property present in the properties of each tilesets in the `.tmj` files
 2. Add the license text in LICENSE.assets
