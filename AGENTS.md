@@ -86,4 +86,7 @@ You can also follow the `upgrade-starter-kit` skill in `.agents/skills/`, which 
 ## Conventions
 
 - Branch off `main` for changes and open a PR. Remember that `main` deploys.
+- **Squash and merge PRs by default** so `main` gets one commit per PR (for example `gh pr merge <n> --squash`). Give the squash commit a clear title.
+  **Exception: PRs that merge `upstream/master`** (the starter-kit migration, and any later upstream sync) **must use a regular merge commit** (`gh pr merge <n> --merge`).
+  Squashing or rebasing those PRs would drop the upstream parent, and then the next `git merge upstream/master` would no longer know what was already synced.
 - Do not commit `dist/`, `node_modules/` or `.env.secret`.
