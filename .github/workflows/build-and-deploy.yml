@@ -17,12 +17,12 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v7
         with:
-          node-version: "20.x"
+          node-version: "24.x"
           registry-url: "https://registry.npmjs.org"
 
       - name: Install Dependencies
@@ -84,10 +84,8 @@ jobs:
 
       - name: Deploy using Github Pages
         if: ${{ env.UPLOAD_MODE == 'GH_PAGES' }}
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: dist/
-          BASE_BRANCH: main
+          branch: gh-pages
+          folder: dist
 
