@@ -57,6 +57,23 @@ There is no separate staging, so a push to `main` is live.
 - New map: copy an existing `.tmj` to the repo root, then set `mapName`, `mapImage` and `script`. Thumbnails are ideally 512x512.
 - Third-party assets: credit them in the tileset's `tilesetCopyright` property and in `LICENSE.assets`.
 
+### Shared custom tileset: `tilesets/mythic_tiles.png`
+
+Our own objects live in one image, `mythic_tiles`, which is embedded in **both** maps at the same `firstgid`: 2956, the last tileset in each.
+WorkAdventure needs tilesets embedded in the map, not external `.tsx` files.
+It holds the team logo and the Magic paintings, each with half-tile-offset versions for centring on walls, our arcade cabinets, and LPC Revised office furniture.
+`LICENSE.assets` lists what is where and who to credit.
+
+Rules, because placed tiles are stored as `firstgid + row * 8 + column`:
+- **Keep it 8 tiles (256 px) wide.** Changing the width renumbers every tile already placed in the maps.
+- **Add new objects only in empty cells or in new rows at the bottom.** Never move or overwrite existing pixels.
+- After resizing the image, update `imageheight` and `tilecount` (columns × rows) of the `mythic_tiles` entry in **every** `.tmj`, then run `npm run buildmap`.
+- Keep any new tileset after `mythic_tiles`, or give `mythic_tiles` room, so that `firstgid` does not change.
+- Credit any new third-party art in the tileset's `tilesetCopyright` property and in `LICENSE.assets`.
+
+Map variables: `{{{ name }}}` placeholders, such as `openWebsite` = `{{{ websiteURL }}}` in `conference.tmj`, are filled by scripting-api-extra from the `configuration` object layer.
+Change the value in that layer's variable object (its `default` property), not in the placeholder.
+
 ## Scripting
 
 `src/main.ts` uses the WorkAdventure iframe API (`WA.*`, typings from `@workadventure/iframe-api-typings`) and `@workadventure/scripting-api-extra` (`bootstrapExtra()`).

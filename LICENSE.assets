@@ -15,3 +15,24 @@ The User shall handle assets with the WorkAdventure specific resources license a
 2. These Assets may be modified (colors or size changed, inverted, trimmed, etc.) only for purposes of use in maps produced for WorkAdventure (SAAS or self-hosted version).
 
 3. These Assets or those modified pursuant to the previous item may undergo Distribution, etc. with maps produced for WorkAdventure. Furthermore, the User may not perform Distribution, etc. of individual Assets or those modified, or Distribution, etc. in combination with programs, etc. other than the map. However, the User may duplicate, transfer, publicly transmit, or enable transmission of personally-modified Assets to other Authorized Users free of charge.
+
+
+MYTHIC_TILES (tilesets/mythic_tiles.png)
+
+Custom tileset shared by all maps of this repository. It contains:
+
+- Team logo (rows 1-2 and 6-8): property of its owner.
+- Arcade cabinets (row 53, columns 7-8): drawn for this map, same license as the map (LICENSE.map).
+- "Magic: The Gathering" logo paintings (rows 1-5, columns 3-8): Magic: The Gathering and its logos
+  are trademarks of Wizards of the Coast LLC. They are NOT covered by the licenses of this repository.
+- Office furniture (rows 9-54): from the LPC Revised project, https://github.com/ElizaWy/LPC
+  (also https://opengameart.org/content/lpc-revised-the-office)
+    * Desk (Office), Cabinet, Lighting (Floor): Lanea Zimmerman (Sharm) and Eliza Wyatt (DeathsDarling)
+      Base assets: https://opengameart.org/content/lpc-modified-base-tiles
+                   https://opengameart.org/content/lpc-interior-castle-tiles
+    * Planter: Lanea Zimmerman (Sharm), recolored by Eliza Wyatt
+      Base assets: https://opengameart.org/content/lpc-interior-castle-tiles
+    * Bin, Copy Machine, Shelf, Tables (Card), TV (Widescreen), Chair (Office), Coffee Maker,
+      Laptop, Rotary Phone: Eliza Wyatt (DeathsDarling)
+  License: OGA-BY 3.0 (https://opengameart.org/content/oga-by-30-faq), a CC-BY 3.0 based license.
+  The TV sheet was cropped to its first two screens; other sheets are unmodified.
