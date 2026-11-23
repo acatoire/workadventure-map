@@ -20,7 +20,7 @@ To play a map, use `https://play.workadventu.re/_/global/acatoire.github.io/work
 | `src/main.ts` | **us** | Map script, referenced by each map's `script` property (`src/main.ts`). Browser scripts must live in `src/`. |
 | `public/` | **us** | Static files served as-is (PDFs, audio, ...). |
 | `README.md`, `LICENSE.map`, `LICENSE.assets` | **us** | |
-| `app/app.ts` | upstream | Dev-server entry point. It only re-exports `@workadventure/map-starter-kit-core`. Do not add logic here. |
+| `app/app.ts` | upstream + local tweak | Dev-server entry point that wraps `@workadventure/map-starter-kit-core`. **Local fix:** it forces `Cache-Control: no-cache`, because core 1.1.5 caches maps for 1 day and tilesets for 7 days, so Tiled edits wouldn't show on refresh. Keep this when merging upstream, unless upstream fixes the caching. Add no other logic here. |
 | `web.vite.config.ts` | upstream | `npm run dev` (Vite + Express publishing UI) |
 | `buildmap.vite.config.ts` | upstream | `npm run buildmap` (optimizes maps into `dist/`) |
 | `tsconfig.json`, `.gitignore`, `LICENSE.code` | upstream | |
