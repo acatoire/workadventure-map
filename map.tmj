@@ -502,9 +502,19 @@
                  "name":"boardTdi",
                  "properties":[
                         {
-                         "name":"openWebsite",
+                         "name":"openTab",
                          "type":"string",
-                         "value":"https:\/\/talend365-my.sharepoint.com\/:wb:\/g\/personal\/acatoire_talend_com\/EZ6tA4aMMKpAi-YbTECxcG0B8DBoRNPN34FF2_BfXKkq8A"
+                         "value":"https:\/\/claude.ai\/artifact\/U8FrRYkb39bLMDHDxGavQM"
+                        }, 
+                        {
+                         "name":"openWebsiteTrigger",
+                         "type":"string",
+                         "value":"onaction"
+                        }, 
+                        {
+                         "name":"openWebsiteTriggerMessage",
+                         "type":"string",
+                         "value":"Press SPACE to open the right whitetable"
                         }],
                  "rotation":0,
                  "type":"area",
@@ -531,7 +541,7 @@
                         {
                          "name":"openWebsiteTriggerMessage",
                          "type":"string",
-                         "value":"Press SPACE to open the whitetable"
+                         "value":"Press SPACE to open the left whitetable"
                         }],
                  "rotation":0,
                  "type":"area",
