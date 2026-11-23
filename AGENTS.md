@@ -25,13 +25,13 @@ To play a map, use `https://play.workadventu.re/_/global/acatoire.github.io/work
 | `buildmap.vite.config.ts` | upstream | `npm run buildmap` (optimizes maps into `dist/`) |
 | `tsconfig.json`, `.gitignore`, `LICENSE.code` | upstream | |
 | `.env` | mixed | Build options and `UPLOAD_MODE`. Here it is **`GH_PAGES`**. Never commit secrets; use `.env.secret` (gitignored). |
-| `.github/workflows/build-and-deploy.yml` | upstream + local tweak | Triggers on **`main`** (upstream uses `master`). |
+| `.github/workflows/build-and-deploy.yml` | upstream + local tweak | Triggers on **`main`** (upstream uses `master`). Actions are pinned to Node 24 majors (`checkout@v7`, `setup-node@v7`, `github-pages-deploy-action@v4`); keep them when merging upstream if upstream is older. |
 | `.agents/skills/upgrade-starter-kit/` | upstream | Upgrade skill. `.claude/skills/upgrade-starter-kit` is a symlink to it. |
 
 ## Commands
 
 ```bash
-npm install          # Node 20+ (CI uses 20)
+npm install          # Node 20+ (CI uses 24)
 npm run dev          # local server + publishing UI at http://localhost:5173
 npm run buildmap     # tsc + optimize all maps into dist/
 npm run preview      # serve dist/ as production would
