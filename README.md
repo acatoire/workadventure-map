@@ -2,26 +2,29 @@
 
 ![map](./map.png)
 
-This is a [starter kit project](https://workadventu.re/map-building) modification for my team on[WorkAdventure](https://workadventu.re).
+This is a [starter kit project](https://workadventu.re/map-building) modification for my team on [WorkAdventure](https://workadventu.re).
 
 The test page is on this [github page](https://acatoire.github.io/workadventure-map/)
 
 ## Structure
 * *public*: Static files like PDFs or audio files
-* *src*: Scripts files
+* *src*: Map scripts (must stay in this folder)
+* *app*: Local dev server entry point (provided by `@workadventure/map-starter-kit-core`)
 * *tilesets*: All tilesets
-* *map.tmj*: Map file
+* *map.tmj*, *conference.tmj*: Map files
 * *map.png*: The map thumbnail displayed on the in-game map information
 
 If you want to use more than one map file, just add the new map file on root or in a folder.
 
 we recommend using 500x500 images for the map thumbnails.
 
-If you are going to create custom websites to embed in the map, please reference the HTML files in the `input` option in *vite.config.js*.
+If you are going to create custom websites to embed in the map, please reference the HTML files in the `input` option in *buildmap.vite.config.ts*.
+
+Based on [workadventure/map-starter-kit](https://github.com/workadventure/map-starter-kit) v3.3.18. See [AGENTS.md](./AGENTS.md) for project details and how to pull upstream updates.
 
 ## Requirements
 
-Node.js version >=16
+Node.js version >=20
 
 ## Installation
 
@@ -36,8 +39,8 @@ npm run dev
 
 You can test the optimized map as it will be in production:
 ```sh
-npm run build
-npm run prod
+npm run buildmap
+npm run preview
 ```
 
 ## Licenses
