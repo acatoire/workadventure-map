@@ -14,7 +14,7 @@ To play a map, use `https://play.workadventu.re/_/global/acatoire.github.io/work
 
 | Path | Owner | Notes |
 |---|---|---|
-| `map.tmj`, `conference.tmj` | **us** | Tiled maps (JSON). Every `*.tmj` at the repo root is picked up automatically by `getMaps()`. |
+| `office.tmj`, `conference.tmj` | **us** | Tiled maps (JSON). WorkAdventure SaaS turns an exit to `<file>.tmj` into the room `<file>`, so **each file name must match its room slug** in the `mythicHQ` world (`office`, `conference`). Every `*.tmj` at the repo root is picked up automatically by `getMaps()`. |
 | `map.png`, `conference.png` | **us** | Map thumbnails, referenced by the `mapImage` property. |
 | `tilesets/` | **us** | Tileset PNGs, referenced by relative path from the `.tmj` files. |
 | `src/main.ts` | **us** | Map script, referenced by each map's `script` property (`src/main.ts`). Browser scripts must live in `src/`. |
@@ -52,7 +52,7 @@ There is no separate staging, so a push to `main` is live.
   If you must edit the JSON, keep Tiled's formatting, keep tile and object IDs consistent (`nextobjectid`, `nextlayerid`), and never reorder `tilesets` (the GIDs depend on the order).
 - WorkAdventure behaviour comes from layer and object **properties**. Examples used here: `exitUrl`, `start`, `jitsiRoom`, `jitsiTrigger`, `silent`, `openWebsite`, `focusable`, `zoom_margin`, `collides`, plus `script` and `mapName`/`mapImage`/`mapDescription` on the map.
   Reference: https://docs.workadventu.re/map-building/
-- Maps link to each other with `exitUrl` = `<file>.tmj#<entry-layer>`. Current links: `map.tmj` `to-conference` → `conference.tmj#from-office`, and `conference.tmj` `to-office` → `map.tmj#from-conference`.
+- Maps link to each other with `exitUrl` = `<file>.tmj#<entry-layer>`. Current links: `office.tmj` `to-conference` → `conference.tmj#from-office`, and `conference.tmj` `to-office` → `office.tmj#from-conference`.
   Keep entry layer names in sync when renaming.
 - New map: copy an existing `.tmj` to the repo root, then set `mapName`, `mapImage` and `script`. Thumbnails are ideally 512x512.
 - Third-party assets: credit them in the tileset's `tilesetCopyright` property and in `LICENSE.assets`.
@@ -94,7 +94,7 @@ Then resolve the conflicts following the ownership column above:
 - Upstream wins for scaffolding.
 - Ours wins for maps and content.
 - Keep `main` in the workflow and `GH_PAGES` in `.env`.
-- Never copy upstream's example maps (`office.tmj`, `office.png`, upstream `conference.tmj`) over ours.
+- Never copy upstream's example maps (`office.tmj`, `office.png`, `conference.tmj`) over ours. Our `office.tmj` has the same name as upstream's, so always keep ours in a conflict.
 - Regenerate `package-lock.json` with `npm install` instead of merging it.
 - Run `npm run buildmap` before committing.
 
