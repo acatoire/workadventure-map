@@ -23,6 +23,7 @@ Custom tileset shared by all maps of this repository. It contains:
 
 - Team logo (rows 1-2 and 6-8): property of its owner.
 - Arcade cabinets (row 53, columns 7-8): drawn for this map, same license as the map (LICENSE.map).
+- Whiteboard words "Roadmap" (row 3, columns 7-8) and "Ideas" (row 4, columns 7-8): drawn for this map, same license as the map (LICENSE.map).
 - "Magic: The Gathering" logo paintings (rows 1-5, columns 3-8): Magic: The Gathering and its logos
   are trademarks of Wizards of the Coast LLC. They are NOT covered by the licenses of this repository.
 - Office furniture (rows 9-54): from the LPC Revised project, https://github.com/ElizaWy/LPC
