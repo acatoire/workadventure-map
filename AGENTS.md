@@ -24,8 +24,8 @@ To play a map, use `https://play.workadventu.re/_/global/acatoire.github.io/work
 | `web.vite.config.ts` | upstream | `npm run dev` (Vite + Express publishing UI) |
 | `buildmap.vite.config.ts` | upstream | `npm run buildmap` (optimizes maps into `dist/`) |
 | `tsconfig.json`, `.gitignore`, `LICENSE.code` | upstream | |
-| `.env` | mixed | Build options and `UPLOAD_MODE`. Here it is **`GH_PAGES`**. Never commit secrets; use `.env.secret` (gitignored). |
-| `.github/workflows/build-and-deploy.yml` | upstream + local tweak | Triggers on **`main`** (upstream uses `master`). Actions are pinned to Node 24 majors (`checkout@v7`, `setup-node@v7`, `github-pages-deploy-action@v4`); keep them when merging upstream if upstream is older. |
+| `.env` | mixed | Build options and `UPLOAD_MODE`. Here it is **`BOTH`** (local tweak: publish to the WA map storage and to GitHub Pages), with `MAP_STORAGE_URL` and `UPLOAD_DIRECTORY`. Never commit secrets: the API key is the `MAP_STORAGE_API_KEY` GitHub secret, or `.env.secret` (gitignored) locally. |
+| `.github/workflows/build-and-deploy.yml` | upstream + local tweak | Triggers on **`main`** (upstream uses `master`). Accepts `UPLOAD_MODE=BOTH`, which runs both the map storage and the GitHub Pages deploy steps. Actions are pinned to Node 24 majors (`checkout@v7`, `setup-node@v7`, `github-pages-deploy-action@v4`); keep them when merging upstream if upstream is older. |
 | `.agents/skills/upgrade-starter-kit/` | upstream | Upgrade skill. `.claude/skills/upgrade-starter-kit` is a symlink to it. |
 
 ## Commands
@@ -43,7 +43,10 @@ If a dependency bump changes those versions, re-run `npm install-scripts approve
 
 ## Deploy
 
-Pushing to `main` runs the workflow, which builds and then publishes `dist/` to the `gh-pages` branch.
+Pushing to `main` runs the workflow, which builds `dist/` and publishes it to two places:
+- the WorkAdventure map storage of the mythicHQ world, in the `UPLOAD_DIRECTORY` folder. This copy is the one where the in-game map editor works (native Meeting rooms, etc.), and editor changes survive new uploads. Every upload replaces all files in that folder.
+- the `gh-pages` branch (GitHub Pages), which only has what is in the `.tmj` files.
+
 There is no separate staging, so a push to `main` is live.
 
 ## Editing maps
@@ -93,7 +96,7 @@ git merge upstream/master   # brings only upstream changes made since the last s
 Then resolve the conflicts following the ownership column above:
 - Upstream wins for scaffolding.
 - Ours wins for maps and content.
-- Keep `main` in the workflow and `GH_PAGES` in `.env`.
+- Keep `main` in the workflow, the `BOTH` conditions in its deploy steps, and `BOTH` in `.env`.
 - Never copy upstream's example maps (`office.tmj`, `office.png`, `conference.tmj`) over ours. Our `office.tmj` has the same name as upstream's, so always keep ours in a conflict.
 - Regenerate `package-lock.json` with `npm install` instead of merging it.
 - Run `npm run buildmap` before committing.
