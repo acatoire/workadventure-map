@@ -41,7 +41,7 @@ jobs:
           echo "UPLOAD_MODE=$UPLOAD_MODE" >> $GITHUB_ENV
 
       - name: Set up Environment Variables
-        if: ${{ env.UPLOAD_MODE == 'MAP_STORAGE' }}
+        if: ${{ env.UPLOAD_MODE == 'MAP_STORAGE' || env.UPLOAD_MODE == 'BOTH' }}
         run: |
           # MAP_STORAGE_API_KEY must always come from GitHub Secrets in CI
           if [ -z "${{ secrets.MAP_STORAGE_API_KEY }}" ]; then
@@ -79,11 +79,11 @@ jobs:
           fi
 
       - name: Deploy using WA Map Storage
-        if: ${{ env.UPLOAD_MODE == 'MAP_STORAGE' }}
+        if: ${{ env.UPLOAD_MODE == 'MAP_STORAGE' || env.UPLOAD_MODE == 'BOTH' }}
         run: npm run upload-only
 
       - name: Deploy using Github Pages
-        if: ${{ env.UPLOAD_MODE == 'GH_PAGES' }}
+        if: ${{ env.UPLOAD_MODE == 'GH_PAGES' || env.UPLOAD_MODE == 'BOTH' }}
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
