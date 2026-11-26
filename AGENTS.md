@@ -71,6 +71,7 @@ It holds the team logo and the Magic paintings, each with half-tile-offset versi
 Rules, because placed tiles are stored as `firstgid + row * 8 + column`:
 - **Keep it 8 tiles (256 px) wide.** Changing the width renumbers every tile already placed in the maps.
 - **Add new objects only in empty cells or in new rows at the bottom.** Never move or overwrite existing pixels.
+  An empty cell can still be placed in a map (an invisible tile), so before drawing in one, check that no `.tmj` uses its GID; prefer new rows.
 - After resizing the image, update `imageheight` and `tilecount` (columns × rows) of the `mythic_tiles` entry in **every** `.tmj`, then run `npm run buildmap`.
 - Keep any new tileset after `mythic_tiles`, or give `mythic_tiles` room, so that `firstgid` does not change.
 - Credit any new third-party art in the tileset's `tilesetCopyright` property and in `LICENSE.assets`.
