@@ -53,8 +53,9 @@ There is no separate staging, so a push to `main` is live.
 
 - `.tmj` files are edited in [Tiled](https://www.mapeditor.org/). Prefer telling the user what to change in Tiled over hand-editing the JSON.
   If you must edit the JSON, keep Tiled's formatting, keep tile and object IDs consistent (`nextobjectid`, `nextlayerid`), and never reorder `tilesets` (the GIDs depend on the order).
-- WorkAdventure behaviour comes from layer and object **properties**. Examples used here: `exitUrl`, `start`, `jitsiRoom`, `jitsiTrigger`, `silent`, `openWebsite`, `focusable`, `zoom_margin`, `collides`, plus `script` and `mapName`/`mapImage`/`mapDescription` on the map.
+- WorkAdventure behaviour comes from layer and object **properties**. Examples used here: `exitUrl`, `start`, `silent`, `openWebsite`, `focusable`, `zoom_margin`, `collides`, plus `script` and `mapName`/`mapImage`/`mapDescription` on the map.
   Reference: https://docs.workadventu.re/map-building/
+- Meeting rooms are **not** in the `.tmj` files: they are WorkAdventure's native Meeting room areas, created with the in-game map editor on the map storage copy. Do not add `jitsiRoom` back, or Jitsi and the Meeting room would both open.
 - Maps link to each other with `exitUrl` = `<file>.tmj#<entry-layer>`. Current links: `office.tmj` `to-conference` → `conference.tmj#from-office`, and `conference.tmj` `to-office` → `office.tmj#from-conference`.
   Keep entry layer names in sync when renaming.
 - New map: copy an existing `.tmj` to the repo root, then set `mapName`, `mapImage` and `script`. Thumbnails are ideally 512x512.
@@ -70,6 +71,7 @@ It holds the team logo and the Magic paintings, each with half-tile-offset versi
 Rules, because placed tiles are stored as `firstgid + row * 8 + column`:
 - **Keep it 8 tiles (256 px) wide.** Changing the width renumbers every tile already placed in the maps.
 - **Add new objects only in empty cells or in new rows at the bottom.** Never move or overwrite existing pixels.
+  An empty cell can still be placed in a map (an invisible tile), so before drawing in one, check that no `.tmj` uses its GID; prefer new rows.
 - After resizing the image, update `imageheight` and `tilecount` (columns × rows) of the `mythic_tiles` entry in **every** `.tmj`, then run `npm run buildmap`.
 - Keep any new tileset after `mythic_tiles`, or give `mythic_tiles` room, so that `firstgid` does not change.
 - Credit any new third-party art in the tileset's `tilesetCopyright` property and in `LICENSE.assets`.
