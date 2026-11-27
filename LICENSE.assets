@@ -37,3 +37,9 @@ Custom tileset shared by all maps of this repository. It contains:
       Laptop, Rotary Phone: Eliza Wyatt (DeathsDarling)
   License: OGA-BY 3.0 (https://opengameart.org/content/oga-by-30-faq), a CC-BY 3.0 based license.
   The TV sheet was cropped to its first two screens; other sheets are unmodified.
+
+## sounds/
+
+- freesound_community-birds-19624.mp3: "Birds" by freesound_community on Pixabay
+  (https://pixabay.com/sound-effects/birds-19624/), Pixabay Content License.
+  Kept as the source of the garden ambient sound set in the map editor on the map storage copy.

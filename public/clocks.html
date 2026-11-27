@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Team clocks</title>
+<style>
+  html, body { margin: 0; height: 100%; background: transparent; overflow: hidden; }
+  body {
+    display: flex; gap: 6px; padding: 4px; box-sizing: border-box;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  .clock {
+    flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    background: #2b2f33; color: #f4f4f4; border: 3px solid #8a5a2b; border-radius: 6px;
+  }
+  .city { font-size: 13px; letter-spacing: .04em; color: #c9d1d9; }
+  .time { font-size: 28px; font-weight: 700; line-height: 1.05; font-variant-numeric: tabular-nums; }
+  .day { font-size: 11px; color: #9da7b1; min-height: 13px; }
+</style>
+</head>
+<body>
+  <div class="clock" data-tz="Asia/Manila"><div class="city">Manila</div><div class="time"></div><div class="day"></div></div>
+  <div class="clock" data-tz="America/New_York"><div class="city">New York</div><div class="time"></div><div class="day"></div></div>
+  <div class="clock" data-tz="Europe/Paris"><div class="city">Paris</div><div class="time"></div><div class="day"></div></div>
+<script>
+  const clocks = [...document.querySelectorAll('.clock')].map((el) => ({
+    time: el.querySelector('.time'),
+    day: el.querySelector('.day'),
+    timeFmt: new Intl.DateTimeFormat('en-GB', { timeZone: el.dataset.tz, hour: '2-digit', minute: '2-digit' }),
+    dayFmt: new Intl.DateTimeFormat('en-GB', { timeZone: el.dataset.tz, weekday: 'short' }),
+  }));
+  function tick() {
+    const now = new Date();
+    for (const c of clocks) {
+      c.time.textContent = c.timeFmt.format(now);
+      c.day.textContent = c.dayFmt.format(now);
+    }
+  }
+  tick();
+  setInterval(tick, 10000);
+</script>
+</body>
+</html>
