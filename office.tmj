@@ -361,24 +361,6 @@
                  "y":96
                 }, 
                 {
-                 "height":128,
-                 "id":14,
-                 "name":"silentZone",
-                 "opacity":1,
-                 "properties":[
-                        {
-                         "name":"silent",
-                         "type":"bool",
-                         "value":true
-                        }],
-                 "rotation":0,
-                 "type":"area",
-                 "visible":true,
-                 "width":95.3333333333333,
-                 "x":768.666666666667,
-                 "y":544
-                }, 
-                {
                  "height":192.666666666667,
                  "id":16,
                  "name":"MeetingRoom",
@@ -450,24 +432,6 @@
                  "y":544
                 }, 
                 {
-                 "height":140.666666666667,
-                 "id":21,
-                 "name":"silentZone",
-                 "opacity":1,
-                 "properties":[
-                        {
-                         "name":"silent",
-                         "type":"bool",
-                         "value":true
-                        }],
-                 "rotation":0,
-                 "type":"area",
-                 "visible":true,
-                 "width":120.666633333333,
-                 "x":322.33335,
-                 "y":114
-                }, 
-                {
                  "height":55.6667,
                  "id":22,
                  "name":"boardTdi",
@@ -522,24 +486,6 @@
                  "width":82.3333333333334,
                  "x":734.833333333333,
                  "y":95.4999833333333
-                }, 
-                {
-                 "height":66.667,
-                 "id":24,
-                 "name":"silentZone",
-                 "opacity":1,
-                 "properties":[
-                        {
-                         "name":"silent",
-                         "type":"bool",
-                         "value":true
-                        }],
-                 "rotation":0,
-                 "type":"area",
-                 "visible":true,
-                 "width":65.3336666666667,
-                 "x":30.3331666666667,
-                 "y":254.333166666667
                 }, 
                 {
                  "height":97,
