@@ -85,6 +85,10 @@ Change the value in that layer's variable object (its `default` property), not i
 Docs: https://docs.workadventu.re/developer/map-scripting/
 `tsc` runs in strict mode with `noUnusedLocals`, so fix type errors rather than loosening the config.
 
+- The office wall clocks (Manila, New York, Paris) are `public/clocks.html`, embedded in `office.tmj` by `src/main.ts` with `WA.room.website.create`.
+- The build copies `public/` to the root of `dist/`, but the dev server serves it under `/public`.
+- The dev server bundles the script with esbuild, not Vite, so `import.meta.env` is undefined there. Use `import.meta.env?.PROD`, never `import.meta.env.DEV`.
+
 ## Keeping up with upstream
 
 The `upstream` remote points to `https://github.com/workadventure/map-starter-kit.git`.
