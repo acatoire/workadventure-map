@@ -15,6 +15,8 @@
   }
   .city { font-size: 13px; letter-spacing: .04em; color: #c9d1d9; }
   .time { font-size: 28px; font-weight: 700; line-height: 1.05; font-variant-numeric: tabular-nums; }
+  .time { border-bottom: 3px solid transparent; padding: 0 2px; }
+  .clock.awake .time { border-bottom-color: #3fca5b; }
   .day { font-size: 11px; color: #9da7b1; min-height: 13px; }
 </style>
 </head>
@@ -26,13 +28,18 @@
   const clocks = [...document.querySelectorAll('.clock')].map((el) => ({
     time: el.querySelector('.time'),
     day: el.querySelector('.day'),
-    timeFmt: new Intl.DateTimeFormat('en-GB', { timeZone: el.dataset.tz, hour: '2-digit', minute: '2-digit' }),
+    el,
+    timeFmt: new Intl.DateTimeFormat('en-GB', { timeZone: el.dataset.tz, hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }),
     dayFmt: new Intl.DateTimeFormat('en-GB', { timeZone: el.dataset.tz, weekday: 'short' }),
   }));
   function tick() {
     const now = new Date();
     for (const c of clocks) {
-      c.time.textContent = c.timeFmt.format(now);
+      const time = c.timeFmt.format(now);
+      c.time.textContent = time;
+      // Green underline during working hours, 9:00 to 17:59 local time.
+      const hour = Number(time.slice(0, 2));
+      c.el.classList.toggle('awake', hour >= 9 && hour < 18);
       c.day.textContent = c.dayFmt.format(now);
     }
   }
